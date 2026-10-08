@@ -11,16 +11,42 @@ body {
   inset: 0;
 }
 
-#legend {
+#panel {
   position: absolute;
   top: 10px;
   left: 10px;
   max-height: calc(100% - 60px);
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#legend,
+#basemap {
   padding: 10px 12px;
   background: rgba(255, 255, 255, 0.92);
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+#legend {
+  min-height: 0;
+  overflow-y: auto;
+}
+
+#basemap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+}
+
+#basemap select {
+  width: 100%;
+  padding: 4px 6px;
+  font: inherit;
+  font-weight: normal;
+  cursor: pointer;
 }
 
 #legend h2 {
