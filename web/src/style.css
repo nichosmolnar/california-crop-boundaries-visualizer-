@@ -1,0 +1,55 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+}
+
+#map {
+  position: absolute;
+  inset: 0;
+}
+
+#legend {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  max-height: calc(100% - 60px);
+  overflow-y: auto;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+#legend h2 {
+  margin: 0 0 2px;
+  font-size: 14px;
+}
+
+#legend p {
+  margin: 0 0 8px;
+}
+
+#legend .row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 18px;
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.swatch.other {
+  background: #bbbbbb;
+}
+
+.muted {
+  color: #666;
+}

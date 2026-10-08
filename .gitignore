@@ -1,0 +1,5 @@
+# Files over 100MB (GitHub file size limit)
+data/ca_2025.fgb
+data/ca_2025.parquet
+
+NationalCSB_2018-2025_rev23/
