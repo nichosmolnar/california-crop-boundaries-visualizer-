@@ -81,16 +81,40 @@ map.on("load", () => {
 
 const popup = new maplibregl.Popup({ closeButton: true, maxWidth: "260px" });
 
-map.on("click", `${SOURCE_ID}-fill`, (e) => {
-  const f = e.features?.[0];
+// Zoomed out, fields are only a few pixels wide, so hit-test a small box
+// rather than the exact click point.
+const CLICK_TOLERANCE_PX = 3;
+
+map.on("click", (e) => {
+  const { x, y } = e.point;
+  const r = CLICK_TOLERANCE_PX;
+  const f = map.queryRenderedFeatures(
+    [
+      [x - r, y - r],
+      [x + r, y + r],
+    ],
+    { layers: [`${SOURCE_ID}-fill`] },
+  )[0];
   if (!f) return;
   const p = f.properties as Record<string, string | number>;
   const code = Number(p[CDL_PROP]);
+  const title = `<strong>${cdlName(code)}</strong> <span class="muted">(CDL ${code})</span><br>`;
+
+  // Low-zoom tiles carry only the crop code; field attributes start at z10.
+  if (p.CSBID === undefined) {
+    map.setFilter(`${SOURCE_ID}-highlight`, ["==", ["get", "CSBID"], ""]);
+    popup
+      .setLngLat(e.lngLat)
+      .setHTML(`${title}<span class="muted">Zoom in for field details</span>`)
+      .addTo(map);
+    return;
+  }
+
   map.setFilter(`${SOURCE_ID}-highlight`, ["==", ["get", "CSBID"], p.CSBID]);
   popup
     .setLngLat(e.lngLat)
     .setHTML(
-      `<strong>${cdlName(code)}</strong> <span class="muted">(CDL ${code})</span><br>` +
+      title +
         `${Number(p.CSBACRES).toLocaleString(undefined, { maximumFractionDigits: 1 })} acres<br>` +
         `${p.CNTY} County<br>` +
         `<span class="muted">CSBID ${p.CSBID}</span>`,
