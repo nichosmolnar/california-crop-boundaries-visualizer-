@@ -1,10 +1,5 @@
-# Files over 100MB (GitHub file size limit)
-data/ca_2025.fgb
-data/ca_2025.parquet
-
-# Intermediate tilesets merged into data/ca_*.pmtiles by pipeline/tile.sh
-data/*_low.pmtiles
-data/*_high.pmtiles
+# Pipeline outputs; the map only needs the copies in web/public/tiles/
+data/
 
 NationalCSB_2018-2025_rev23/
 .venv/

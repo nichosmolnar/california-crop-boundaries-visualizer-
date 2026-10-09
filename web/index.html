@@ -4,13 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>USDA Crop Sequence Boundaries — California 2025</title>
+    <title>USDA Crop Sequence Boundaries — California</title>
   </head>
   <body>
     <div id="map"></div>
+    <div id="tooltip" hidden></div>
     <div id="panel">
       <div id="legend"></div>
-      <label id="basemap">
+      <label id="year" class="control" hidden>
+        <span>Year <output id="year-value"></output></span>
+        <input id="year-slider" type="range" step="1" />
+        <span class="range-ends muted"><span id="year-min"></span><span id="year-max"></span></span>
+      </label>
+      <label id="basemap" class="control">
         Map style
         <select id="basemap-select"></select>
       </label>

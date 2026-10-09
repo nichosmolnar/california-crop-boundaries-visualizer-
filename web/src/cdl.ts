@@ -1,5 +1,5 @@
-// USDA NASS Cropland Data Layer codes present in the California 2025 CSB
-// extract, with colors from the standard CDL legend.
+// USDA NASS Cropland Data Layer codes present in the California 2018–2025 CSB
+// extracts, with colors from the standard CDL legend.
 export const CDL: Record<number, { name: string; color: string }> = {
   1: { name: "Corn", color: "#ffd300" },
   2: { name: "Cotton", color: "#ff2626" },
@@ -16,16 +16,20 @@ export const CDL: Record<number, { name: string; color: string }> = {
   24: { name: "Winter Wheat", color: "#a57000" },
   27: { name: "Rye", color: "#6e0048" },
   28: { name: "Oats", color: "#a05989" },
+  29: { name: "Millet", color: "#6e0048" },
   31: { name: "Canola", color: "#d1ff00" },
+  32: { name: "Flaxseed", color: "#d1ff00" },
   33: { name: "Safflower", color: "#ffff00" },
   34: { name: "Rape Seed", color: "#d1ff00" },
   35: { name: "Mustard", color: "#00af49" },
   36: { name: "Alfalfa", color: "#ffa5e2" },
   37: { name: "Other Hay/Non Alfalfa", color: "#a5f28c" },
+  39: { name: "Buckwheat", color: "#d69ebc" },
   41: { name: "Sugarbeets", color: "#a800e2" },
   42: { name: "Dry Beans", color: "#a50000" },
   43: { name: "Potatoes", color: "#702600" },
   44: { name: "Other Crops", color: "#00af49" },
+  45: { name: "Sugarcane", color: "#af7cff" },
   46: { name: "Sweet Potatoes", color: "#702600" },
   47: { name: "Misc Vegs & Fruits", color: "#ff6666" },
   48: { name: "Watermelons", color: "#ff6666" },
@@ -35,6 +39,7 @@ export const CDL: Record<number, { name: string; color: string }> = {
   52: { name: "Lentils", color: "#00ddaf" },
   53: { name: "Peas", color: "#54ff00" },
   54: { name: "Tomatoes", color: "#f2a377" },
+  56: { name: "Hops", color: "#00af49" },
   57: { name: "Herbs", color: "#7cd3ff" },
   58: { name: "Clover/Wildflowers", color: "#e8bfff" },
   59: { name: "Sod/Grass Seed", color: "#afffdd" },
@@ -90,24 +95,29 @@ export const CDL: Record<number, { name: string; color: string }> = {
   227: { name: "Lettuce", color: "#ff6666" },
   228: { name: "Dbl Crop Triticale/Corn", color: "#ffd300" },
   229: { name: "Pumpkins", color: "#ff6666" },
+  230: { name: "Dbl Crop Lettuce/Durum Wht", color: "#ff6666" },
   231: { name: "Dbl Crop Lettuce/Cantaloupe", color: "#ff6666" },
   232: { name: "Dbl Crop Lettuce/Cotton", color: "#ff6666" },
+  233: { name: "Dbl Crop Lettuce/Barley", color: "#ff6666" },
   236: { name: "Dbl Crop WinWht/Sorghum", color: "#a57000" },
   237: { name: "Dbl Crop Barley/Corn", color: "#ffd300" },
+  238: { name: "Dbl Crop WinWht/Cotton", color: "#a57000" },
   242: { name: "Blueberries", color: "#000099" },
   243: { name: "Cabbage", color: "#ff6666" },
   244: { name: "Cauliflower", color: "#ff6666" },
   245: { name: "Celery", color: "#ff6666" },
   246: { name: "Radishes", color: "#ff6666" },
+  247: { name: "Turnips", color: "#ff6666" },
   248: { name: "Eggplants", color: "#ff6666" },
 };
 
 export const FALLBACK_COLOR = "#bbbbbb";
 
-// Top California 2025 classes by total CSB acreage.
+// Top California classes by total CSB acreage summed over 2018–2025, so the
+// legend is the same for every year.
 export const LEGEND_CODES = [
-  75, 69, 176, 204, 36, 3, 76, 61, 72, 24, 47, 1, 54, 37, 195, 2, 225, 228,
-  205, 121,
+  75, 69, 36, 61, 176, 204, 76, 3, 24, 72, 37, 54, 1, 2, 225, 152, 228, 195,
+  205, 28,
 ];
 
 export function cdlName(code: number): string {

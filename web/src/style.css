@@ -22,7 +22,7 @@ body {
 }
 
 #legend,
-#basemap {
+.control {
   padding: 10px 12px;
   background: rgba(255, 255, 255, 0.92);
   border-radius: 6px;
@@ -34,14 +34,31 @@ body {
   overflow-y: auto;
 }
 
-#basemap {
+.control {
   display: flex;
   flex-direction: column;
   gap: 4px;
   font-weight: 600;
 }
 
-#basemap select {
+.control[hidden] {
+  display: none;
+}
+
+.control input[type="range"] {
+  width: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.control .range-ends {
+  display: flex;
+  justify-content: space-between;
+  font-weight: normal;
+  font-size: 11px;
+}
+
+.control select {
   width: 100%;
   padding: 4px 6px;
   font: inherit;
@@ -62,7 +79,34 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
+  margin: 0 -4px;
+  padding: 0 4px;
+  border-radius: 3px;
   line-height: 18px;
+  cursor: default;
+}
+
+#legend .row.active {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+#tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  max-width: 240px;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  line-height: 1.4;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+#tooltip[hidden] {
+  display: none;
 }
 
 .swatch {
